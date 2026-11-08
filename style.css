@@ -20,7 +20,9 @@ h2 {
   width: 100px;
   height: 100px;
   display: inline-block;
-  border: 2px solid black;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
   font-size: 64px;
   text-align: center;
   line-height: 100px;
@@ -34,6 +36,31 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: white;
-  border: 2px solid black;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
   cursor: pointer;
+}
+
+.sqr[data-player="X"] {
+  color: blue;
+}
+
+.sqr[data-player="O"] {
+  color: red;
+}
+
+
+.winner {
+  color: green;
+}
+
+#reset.win {
+  background-color: green;
+  color: white;
+}
+
+#reset.tie {
+  background-color: orange;
+  color: black;
 }
