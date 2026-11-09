@@ -19,6 +19,7 @@ const sqr7El = document.getElementById('7')
 const sqr8El = document.getElementById('8')
 
 const msgEl = document.querySelector('#message')
+const resetEl = document.querySelector('#reset')
 /*----------------------------- Event Listeners -----------------------------*/
 
 msgEl.textContent = "It's X's turn"
@@ -867,4 +868,22 @@ sqr8El.addEventListener('click', () => {
     gameOver = true
     msgEl.textContent = "It's a draw!"
   }
+})
+
+resetEl.addEventListener('click', () => {
+  isXTurn = true
+  gameOver = false
+  moveCount = 0
+
+  sqr0El.textContent = ''
+  sqr1El.textContent = ''
+  sqr2El.textContent = ''
+  sqr3El.textContent = ''
+  sqr4El.textContent = ''
+  sqr5El.textContent = ''
+  sqr6El.textContent = ''
+  sqr7El.textContent = ''
+  sqr8El.textContent = ''
+
+  msgEl.textContent = "It's X's turn"
 })
