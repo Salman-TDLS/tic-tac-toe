@@ -21,7 +21,7 @@ const sqr8El = document.getElementById('8')
 const msgEl = document.querySelector('#message')
 /*----------------------------- Event Listeners -----------------------------*/
 
-msgEl.textContent = "It's X's turn" // X goes first
+msgEl.textContent = "It's X's turn"
 
 sqr0El.addEventListener('click', () => {
   if (sqr0El.textContent !== '' || gameOver) return
@@ -868,4 +868,3 @@ sqr8El.addEventListener('click', () => {
     msgEl.textContent = "It's a draw!"
   }
 })
-
