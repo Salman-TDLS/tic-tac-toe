@@ -20,26 +20,17 @@ const sqr8El = document.getElementById('8')
 
 const msgEl = document.querySelector('#message')
 const resetEl = document.querySelector('#reset')
-/*----------------------------- Event Listeners -----------------------------*/
+/*-------------------------------- Functions --------------------------------*/
 
-msgEl.textContent = "It's X's turn"
-
-sqr0El.addEventListener('click', () => {
-  if (sqr0El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr0El.textContent = 'X'
-  } else {
-    sqr0El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
+function updateTurnMessage() {
   if (isXTurn) {
     msgEl.textContent = "It's X's turn"
   } else {
     msgEl.textContent = "It's O's turn"
   }
-  moveCount++
+}
 
+function checkGameResult() {
   if (
     sqr0El.textContent !== '' &&
     sqr0El.textContent === sqr1El.textContent &&
@@ -116,761 +107,24 @@ sqr0El.addEventListener('click', () => {
     gameOver = true
     msgEl.textContent = "It's a draw!"
   }
-})
+}
 
-sqr1El.addEventListener('click', () => {
-  if (sqr1El.textContent !== '' || gameOver) return
+function playSquare(sqrEl) {
+  if (sqrEl.textContent !== '' || gameOver) return
 
   if (isXTurn) {
-    sqr1El.textContent = 'X'
+    sqrEl.textContent = 'X'
   } else {
-    sqr1El.textContent = 'O'
+    sqrEl.textContent = 'O'
   }
+
   isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
   moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-sqr2El.addEventListener('click', () => {
-  if (sqr2El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr2El.textContent = 'X'
-  } else {
-    sqr2El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
-  moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-sqr3El.addEventListener('click', () => {
-  if (sqr3El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr3El.textContent = 'X'
-  } else {
-    sqr3El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
-  moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-sqr4El.addEventListener('click', () => {
-  if (sqr4El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr4El.textContent = 'X'
-  } else {
-    sqr4El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
-  moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-sqr5El.addEventListener('click', () => {
-  if (sqr5El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr5El.textContent = 'X'
-  } else {
-    sqr5El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
-  moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-sqr6El.addEventListener('click', () => {
-  if (sqr6El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr6El.textContent = 'X'
-  } else {
-    sqr6El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
-  moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-sqr7El.addEventListener('click', () => {
-  if (sqr7El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr7El.textContent = 'X'
-  } else {
-    sqr7El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
-  moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-sqr8El.addEventListener('click', () => {
-  if (sqr8El.textContent !== '' || gameOver) return
-
-  if (isXTurn) {
-    sqr8El.textContent = 'X'
-  } else {
-    sqr8El.textContent = 'O'
-  }
-  isXTurn = !isXTurn
-  if (isXTurn) {
-    msgEl.textContent = "It's X's turn"
-  } else {
-    msgEl.textContent = "It's O's turn"
-  }
-  moveCount++
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr1El.textContent &&
-    sqr0El.textContent === sqr2El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr3El.textContent !== '' &&
-    sqr3El.textContent === sqr4El.textContent &&
-    sqr3El.textContent === sqr5El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr3El.textContent} wins!`
-  }
-
-  if (
-    sqr6El.textContent !== '' &&
-    sqr6El.textContent === sqr7El.textContent &&
-    sqr6El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr6El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr3El.textContent &&
-    sqr0El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr1El.textContent !== '' &&
-    sqr1El.textContent === sqr4El.textContent &&
-    sqr1El.textContent === sqr7El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr1El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr5El.textContent &&
-    sqr2El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (
-    sqr0El.textContent !== '' &&
-    sqr0El.textContent === sqr4El.textContent &&
-    sqr0El.textContent === sqr8El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr0El.textContent} wins!`
-  }
-
-  if (
-    sqr2El.textContent !== '' &&
-    sqr2El.textContent === sqr4El.textContent &&
-    sqr2El.textContent === sqr6El.textContent
-  ) {
-    gameOver = true
-    msgEl.textContent = `${sqr2El.textContent} wins!`
-  }
-
-  if (moveCount === 9 && !gameOver) {
-    gameOver = true
-    msgEl.textContent = "It's a draw!"
-  }
-})
-
-resetEl.addEventListener('click', () => {
+  updateTurnMessage()
+  checkGameResult()
+}
+
+function resetGame() {
   isXTurn = true
   gameOver = false
   moveCount = 0
@@ -885,5 +139,47 @@ resetEl.addEventListener('click', () => {
   sqr7El.textContent = ''
   sqr8El.textContent = ''
 
-  msgEl.textContent = "It's X's turn"
+  updateTurnMessage()
+}
+
+/*----------------------------- Event Listeners -----------------------------*/
+
+sqr0El.addEventListener('click', () => {
+  playSquare(sqr0El)
 })
+
+sqr1El.addEventListener('click', () => {
+  playSquare(sqr1El)
+})
+
+sqr2El.addEventListener('click', () => {
+  playSquare(sqr2El)
+})
+
+sqr3El.addEventListener('click', () => {
+  playSquare(sqr3El)
+})
+
+sqr4El.addEventListener('click', () => {
+  playSquare(sqr4El)
+})
+
+sqr5El.addEventListener('click', () => {
+  playSquare(sqr5El)
+})
+
+sqr6El.addEventListener('click', () => {
+  playSquare(sqr6El)
+})
+
+sqr7El.addEventListener('click', () => {
+  playSquare(sqr7El)
+})
+
+sqr8El.addEventListener('click', () => {
+  playSquare(sqr8El)
+})
+
+resetEl.addEventListener('click', resetGame)
+
+updateTurnMessage()
